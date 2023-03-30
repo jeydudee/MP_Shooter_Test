@@ -1,0 +1,103 @@
+bugs
+---------------
+- make transition smoother
+- after failed to join session, session unplayable
+- persistent hud bugs
+- sometimes client will respawn with sniper scope widget
+- switching weapons with sniper scope bugs
+- clients spawn with 0 hud health sometimes
+- overlapping widgets
+- grenade animation dupping
+- sniper should zoom in on muzzle
+
+
+
+Optional Challenges
+- Client-side prediction for reloading
+- set combat state to unoccupied after reloading
+- ssr for rockets and grenades
+- change hit target when confirming a hit
+
+To-dos
+-----
+- recoil and spread - prototype done!
+- player chat
+- taking damage sound - prototype done!
+- hit target sound - prototype done!
+- music
+- single-player tutorial
+- override camera aim with muzzle flash hit target
+- tab for scores
+- dry fire sound effect
+- player settings
+- make map
+
+- soccer
+
+sources:
+Mixamo - Animations
+Google Fonts
+Zapsplat - SFX
+
+250 - purple
+251 - blue
+252 - tan
+
+
+Things I learned
+-----------------
+In blueprints, if you're trying to override a virtual replicated function that can only be done in C++, try creating 
+your own replicated variable to override
+
+Super:: calls in C++ is equivalent to calling "Add call to parent function" in blueprints
+Dynamic Delegate in C++ is equivalent to Event Dispatchers in Blueprints
+
+Overriding certain event delegates/dispatchers may require you to select the "component" in the object hierarchy
+
+layers of retargeting animations
+Retargeter
+IK Rig
+Animation Sequence
+
+Listing out the suggested assets for future review:
+1. Unity Store
+2. Turbosquid
+3. Epidemic Sound
+4. Pond5
+5. Noun Project
+6. Craftpix
+
+- Insert at index 0 of an array is pushing
+- Resize is truncating
+---------------------------------------------------------
+
+DefaultGame.ini (changes hard cap on max players)
+[/Script/Engine.GameSession]
+MaxPlayers=100
+
+DefaultEngine.ini
+[/Script/Engine.GameEngine]
++NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="OnlineSubsystemSteam.SteamNetDriver",DriverClassNameFallback="OnlineSubsystemUtils.IpNetDriver")
+
+[OnlineSubsystem]
+DefaultPlatformService=Steam
+
+[OnlineSubsystemSteam]
+bEnabled=true
+SteamDevAppId=480
+bInitServerOnClient=true
+
+[/Script/OnlineSubsystemSteam.SteamNetDriver]
+NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
+
+(sets higher tick rate for performance server)
+[/Script/OnlineSubsystemUtils.IpNetDriver]
+NetServerMaxTickRate=120
+
+https://www.unrealengine.com/en-US/blog/finding-network-based-exploits
+[PacketSimulationSettings]
+PktLag=0
+PktLagVariance=0
+PktLoss=0
+PktOrder=0
+PktDup=0
